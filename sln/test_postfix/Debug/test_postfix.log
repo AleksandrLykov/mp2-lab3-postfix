@@ -1,0 +1,24 @@
+﻿Построение начато 23.12.2015 20:01:38.
+     1>Проект "C:\Users\Александр\Desktop\Программ\пока что 3\mp2-lab3-postfix\sln\test_postfix\test_postfix.vcxproj" в узле 2 (целевые объекты build).
+     1>InitializeBuildStatus:
+         Создание "Debug\test_postfix.unsuccessfulbuild", так как было задано "AlwaysCreate".
+       ClCompile:
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /I../../include /I../../gtest /ZI /nologo /W3 /WX- /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt ..\..\test\test_main.cpp ..\..\test\test_postfix.cpp
+         test_postfix.cpp
+         test_main.cpp
+         Создание кода...
+       Link:
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Александр\Desktop\Программ\пока что 3\mp2-lab3-postfix\sln\Debug\test_postfix.exe" /NOLOGO /LIBPATH:Debug gtest.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Debug\test_postfix.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\Александр\Desktop\Программ\пока что 3\mp2-lab3-postfix\sln\Debug\test_postfix.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Александр\Desktop\Программ\пока что 3\mp2-lab3-postfix\sln\Debug\test_postfix.lib" /MACHINE:X86 Debug\test_main.obj
+         Debug\test_postfix.obj
+         "C:\Users\Александр\Desktop\Программ\пока что 3\mp2-lab3-postfix\sln\gtest\Debug\gtest-all.obj"
+         test_postfix.vcxproj -> C:\Users\Александр\Desktop\Программ\пока что 3\mp2-lab3-postfix\sln\Debug\test_postfix.exe
+       Manifest:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"C:\Users\Александр\Desktop\Программ\пока что 3\mp2-lab3-postfix\sln\Debug\test_postfix.exe;#1" /manifest Debug\test_postfix.exe.intermediate.manifest
+       FinalizeBuildStatus:
+         Файл "Debug\test_postfix.unsuccessfulbuild" удаляется.
+         Обращение к "Debug\test_postfix.lastbuildstate".
+     1>Построение проекта "C:\Users\Александр\Desktop\Программ\пока что 3\mp2-lab3-postfix\sln\test_postfix\test_postfix.vcxproj" завершено (целевые объекты build).
+
+Построение успешно завершено.
+
+Затраченное время: 00:00:02.62
