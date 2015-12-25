@@ -1,9 +1,10 @@
-﻿#ifndef __LIST_STACK_H__
-#define __LIST_STACK_H__
+﻿#ifndef __LIST__STACK_H__
+#define __LIST__STACK_H__
 
 #include <iostream>
 #include <cstdlib>
 
+const int MAX_STRING = 100000;
 
 using namespace std;
 
@@ -41,8 +42,8 @@ public:
 	stack ();
 	stack (const stack<PType>&);
 	~stack();
-	bool isfull (void) const;
-	bool isempty (void) const;
+	bool isfull () const;
+	bool isempty () const;
 	void push (const PType&);
 	PType pop(void);
 };
@@ -203,7 +204,7 @@ stack<PType>::~stack(){
 
 //Проверка на полноту
 template <class PType>
-bool stack<PType>::isfull(void) const{
+bool stack<PType>::isfull() const{
 	Node<PType>* tmp;
 	try{
 		tmp = new Node<PType>;
@@ -217,7 +218,7 @@ bool stack<PType>::isfull(void) const{
 
 //Проверка на пустоту
 template <class PType>
-bool stack<PType>::isempty(void) const
+bool stack<PType>::isempty() const
 {
 	return (pList->getfirst() == 0);
 }
@@ -232,9 +233,10 @@ void stack<PType>::push(const PType& key){
 
 //Удаление из стэка
 template <class PType>
-PType stack<PType>::pop(void){
-	if (isempty())
-		throw("STACK PYSTOI");
+PType stack<PType>::pop(void)
+{
+	if (isempty() == 1)
+		throw "asd";
 	PType tmp = pList->getfirst()->key;
 	pList->remove(tmp);
 	return tmp;

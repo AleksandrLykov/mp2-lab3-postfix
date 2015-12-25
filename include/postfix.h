@@ -8,21 +8,19 @@ using namespace std;
 
 class Postfix {
 private:
-	stack<char>* res;
-	stack<char>* oper;	
-	string v1; // исходное выражение
-	string v2; // готовое выражение
-	int kolvo; // количество операций
+	stack<char>* res; //первый стек
+	stack<char>* oper;	//второй стек
+	string v1; //начальные данные
 public:
-	Postfix();
+	Postfix(const string&);
 	~Postfix();
-	
-	int prioritet(const char);
-	int operand (const char);
-	int operaci (const char); //приоритет операции
+	int operaci (const char);
+	int prioritet (const char); //приоритет операции
 	char skobka (); // если попалась скобка
-	char priorit (char b); // если приоритет новой операции меньше старого
-}
+	char ponizhenie (char a); // если приоритет новой операции меньше старого
+	string printres (); //вывод результата
+	string postfix (); //сам перевод
+};
 
 
 #endif
