@@ -33,7 +33,7 @@ int Postfix::prioritet(const char a)
 {
 	if ((a == '*') || (a == '/') || (a == '+') || (a == '-') || (a == '(') || (a == ')')) 
 		return operaci(a);
-	if (((a >= 'a') && (a <= 'z')) || ((a >= 'A') && (a <= 'Z')))
+	if (((a >= 'a') && (a <= 'z')) || ((a >= 'A') && (a <= 'Z')) || (a == ' ') || ((a >=-1000) && (a <= 1000)))
 	return 0;
 	else throw "a";
 }
@@ -46,33 +46,35 @@ char Postfix::skobka()
 		res->push(a);
 		a = oper->pop();
 	}
-	a = oper->pop();
+	
 	return (a);
 }
 
 char Postfix::ponizhenie(char a) 
 {
 	char b = oper->pop();
-	while ((operaci(a)) < (operaci(b)) || (oper->isempty() != true)) 
+	while ((operaci(a)) < (operaci(b)) && (oper->isempty() != true)) 
 	{
 		res->push(b);
 		b = oper->pop();
 	}
-	if (operaci(a) < operaci(b))
+	if (operaci(a) <= operaci(b))
 		res->push(b);
-	else oper ->push(b);
+	else oper -> push(b);
 	return a;
 }
 
 string Postfix::printres()
 {
-	int n=0;
+	char a;
 	if (oper->isempty() == 0)
 		throw ("OPERACII NE KONCHILIS'");
 	while (res->isempty() != 1)
 	{
-		oper->push(res->pop());
-		n++;
+		a = res->pop();	
+		while (a == '(')
+			a = res->pop();			
+		oper->push(a);
 	}
 	string v;
 	while (oper->isempty() != 1)
