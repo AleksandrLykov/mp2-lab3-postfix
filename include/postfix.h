@@ -20,6 +20,7 @@ public:
 	char ponizhenie (char a); // если приоритет новой операции меньше старого
 	string printres (); //вывод результата
 	string postfix (); //сам перевод
+	void vichisl (string); //вычисление выражения
 };
 
 

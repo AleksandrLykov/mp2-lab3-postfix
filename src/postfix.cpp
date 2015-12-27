@@ -1,5 +1,7 @@
 #include "postfix.h"
 
+#include <map>
+
 Postfix::Postfix(const string& a) 
 {
 	res = new stack<char>();
@@ -33,8 +35,8 @@ int Postfix::prioritet(const char a)
 {
 	if ((a == '*') || (a == '/') || (a == '+') || (a == '-') || (a == '(') || (a == ')')) 
 		return operaci(a);
-	if (((a >= 'a') && (a <= 'z')) || ((a >= 'A') && (a <= 'Z')) || (a == ' ') || ((a >=-1000) && (a <= 1000)))
-	return 0;
+	if (((a >= 'a') && (a <= 'z')) || ((a >= 'A') && (a <= 'Z')) || (a == ' ') || ((a >=-1000) && (a <= 1000))) 
+		return 0;
 	else throw "a";
 }
 
@@ -113,4 +115,50 @@ string Postfix::postfix ()
 		}
 	string v2 = printres();
 	return v2;
+}
+ 
+void Postfix::vichisl (string v2) 
+{
+	string t;
+	int n = 0; 
+	char z;
+	map<char, float> a;
+	for (int i=0; i<v2.length();i++)
+		if (prioritet(v2[i]) == 0)
+		{
+			t.push_back(v2[i]);
+			n++;
+		}
+	for (int i=0; i<n; i++)
+	{
+		cout << "¬ведите " << t[i] << ": " << endl;
+		z = t[i];
+		cin >> a[t[i]];
+	}
+	
+	stack<float> result;
+	char tmp;
+	float left;
+	float right;
+	for (int i = 0; i < v2.length(); i++) 
+	{
+		tmp = v2[i];
+		if (prioritet(v2[i]) == 0) 		
+			result.push(a[tmp]);
+		if (prioritet(v2[i]) != 0)
+		{
+			right = result.pop();		
+			left = result.pop();
+			if (tmp == '+')
+				result.push(left + right);
+			if (tmp == '-')
+				result.push(left - right);
+			if (tmp == '*')
+				result.push(left*right);
+			if (tmp == '/')
+				result.push(left / right);
+		}
+	}
+	float res = result.pop();
+	cout << "Otvet" << endl << res << endl;		
 }

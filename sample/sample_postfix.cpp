@@ -10,6 +10,7 @@ void main ()
 	Postfix a(vyrazh);
 	cout << "Введённое выражение: " << endl << vyrazh << endl << "Ответ: " << endl;
 	otvet = a.postfix();
-	cout << otvet << endl;
+	cout << otvet << endl << "Теперь попробуем вычислить" << endl;
+	a.vichisl(otvet);
 	system("pause");
 }
