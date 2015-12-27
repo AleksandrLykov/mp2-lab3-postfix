@@ -1,5 +1,6 @@
 #include "postfix.h"
-#include "list_stack.h"
+#include "list.h"
+#include "stack.h"
 
 #include <gtest.h>
 
@@ -105,3 +106,13 @@ TEST(Stack, proverka_pop)
 	EXPECT_EQ(c, 11);
 }
 
+#define use
+#ifndef use
+TEST(Postfix, ispytaem){
+	string str = "(a+b)*c";
+	Postfix p(str);
+	string a = p.postfix();
+	string b = "ab+c*";
+    EXPECT_EQ(a,b);
+}
+#endif

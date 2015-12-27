@@ -1,7 +1,7 @@
 #ifndef __POSTFIX_H__
 #define __POSTFIX_H__
 
-#include "list_stack.h"
+#include "stack.h"
 #include <string>
 
 using namespace std;
