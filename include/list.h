@@ -24,7 +24,7 @@ private:
 public:
 	list (void);
 	~list();
-	list (const list<PType> &l);	
+	list (const list<PType> &);	
 	void push (const PType& tmp);
 	Node<PType>* search(const PType& key);
 	void pushafter (const PType& s, const PType& key);
