@@ -4,84 +4,111 @@
 #include "list.h"
 
 template <class PType>
-class stack {
-private: 
-	list<PType>* pList;
+class Stack
+{
+private:
+	list<PType> *List;
 public:
-	stack ();
-	stack (const stack<PType>&);
-	~stack();
-	bool isfull () const;
-	bool isempty () const;
-	void push (const PType&);
-	PType pop(void);
-	void print();
+	Stack();
+	Stack(const Stack<PType>&);
+	~Stack();
+	int IsEmpty(void)const;
+	int IsFull(void)const;
+	void Push(const PType);
+	PType Pop();
+	int operator==(const Stack<PType>& s)const;
+	int operator!=(const Stack<PType>& s)const;
+	void Print()const;
+	PType GetKey();
 };
 
-template <class PType>
-stack<PType>::stack ()
+template<class PType>
+Stack<PType>::Stack()
 {
-	pList = new list<PType>();
+	List = new list<PType>();
 }
 
-template <class PType>
-stack<PType>::stack(const stack<PType>& st)
+template<class PType>
+Stack<PType>::~Stack()
 {
-	pList = new list<PType>(*st.pList);
+	delete List;
 }
 
-template <class PType>
-stack<PType>::~stack(){
-	delete pList;
+template<class PType>
+Stack<PType>::Stack(const Stack<PType>& stack)
+{
+	List = new list<PType>(*(stack.List));
 }
 
-//Проверка на полноту
-template <class PType>
-bool stack<PType>::isfull() const{
-	Node<PType>* tmp;
-	try{
+template<class PType>
+int Stack<PType>::IsEmpty(void)const
+{
+	return(List->getfirst() == 0);
+}
+
+template<class PType>
+int Stack<PType>::IsFull(void)const
+{
+	Node<PType> *tmp;
+	try
+	{
 		tmp = new Node<PType>;
-	} 
-	catch (...) {
-		return true;
+	}
+	catch (...)
+	{
+		return 1;
 	}
 	delete tmp;
-	return false;
+	return 0;
 }
 
-//Проверка на пустоту
-template <class PType>
-bool stack<PType>::isempty() const
+template<class PType>
+void Stack<PType>::Push(const PType k)
 {
-	return (pList->getfirst() == 0);
+	if (IsFull())
+		throw
+		exception("Stack is full");
+	List->push(k);
 }
 
-//Добавление элемента в стэк
-template <class PType>
-void stack<PType>::push(const PType& key){
-	if (isfull())
-		throw("STACK PEREPOLNEN");
-	pList->push(key);
-}
-
-//Удаление из стэка
-template <class PType>
-PType stack<PType>::pop(void)
+template<class PType>
+PType Stack<PType>::Pop()
 {
-	if (isempty() == 1)
-		throw "asd";
-	PType tmp = pList->getfirst()->key;
-	pList->remove(tmp);
+	if (IsEmpty())
+		throw
+			exception ("Stack is empty");
+	PType tmp = List->getfirst()->key;
+	List->remove(tmp);
 	return tmp;
 }
 
-//печать стека
 template <class PType>
-void stack<PType>::print()
+int Stack<PType>::operator==(const Stack<PType>& s)const
 {
-    stack<PType>* s = new stack<PType>(*this);
-    while (s->isempty() != 1)
-        cout << s->pop() << " -> ";
+	return (*List == *(s.List));
+}
+
+template <class PType>
+int Stack<PType>::operator!= (const Stack<PType>& s)const
+{
+	return (*List != *(s.List));
+}
+
+template <class PType>
+void Stack<PType>::Print()const
+{
+	Stack<PType>* s = new Stack<PType>(*this);
+	while (!(s->IsEmpty()))
+		cout << s->Pop() << endl;
+}
+
+template <class PType>
+PType Stack<PType>::GetKey()
+{
+	if (IsEmpty())
+		throw
+		exception ("Stack is empty");
+	return List->getfirst()->key;
 }
 
 #endif

@@ -3,25 +3,21 @@
 
 #include "stack.h"
 #include <string>
+#include <map>
 
 using namespace std;
 
-class Postfix {
-private:
-	stack<char>* res; //первый стек
-	stack<char>* oper;	//второй стек
-	string v1; //начальные данные
-public:
-	Postfix(const string&);
-	~Postfix();
-	int operaci (const char);
-	int prioritet (const char); //приоритет операции
-	char skobka (); // если попалась скобка
-	char ponizhenie (char a); // если приоритет новой операции меньше старого
-	string printres (); //вывод результата
-	string postfix (); //сам перевод
-	void vichisl (string); //вычисление выражения
-};
+typedef float ExpType;
 
+class Postfix
+{
+private:
+	int Operator(char);
+	int Line(const string&)const;
+	void Bracket(const string&)const;
+public:
+	string Record(const string&)const;
+	ExpType Count(const string&, map<char, ExpType>);
+};
 
 #endif

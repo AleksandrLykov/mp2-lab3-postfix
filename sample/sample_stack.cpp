@@ -1,18 +1,25 @@
 #include "stack.h"
 
 void main()
-{    
-    setlocale(LC_ALL, "Russian");
-	stack<int>* s = new stack<int>;
-    cout << "Проверка isempty" << endl;
-    cout << s->isempty() << endl;
-	s->push(1);
-	s->push(2);
-	s->push(3);
-    cout <<"Начальный" << endl;
-    s->print();
-    cout << endl <<"Проверка popы" << endl;
-    s->pop();
-    s->print();
-	system("pause");
+{
+	setlocale(LC_ALL, "Russian");
+	int i = 0;
+	Stack<int>* s = new Stack<int>();
+	cout << "Введите размер" << endl;
+	int n;
+	cin >> n;
+	int k;
+	for (i=0; i < n; i++)
+	{
+		cout << "Введите выши элементы: ";
+		cin >> k;
+		s->Push(k);
+	}
+	cout << endl << "Вы добавили " << n << " элемента " << endl;
+	s->Print();	
+	cout << endl << "Удалили один элемент " << endl;
+	s->Pop();
+	s->Print();
+	system ("pause");
+	return;
 }

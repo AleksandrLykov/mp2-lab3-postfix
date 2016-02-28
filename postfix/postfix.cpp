@@ -1,116 +1,219 @@
+#include "stack.h"
 #include "postfix.h"
 
-Postfix::Postfix(const string& a) 
-{
-	res = new stack<char>();
-	oper = new stack<char>();
-	v1 = a;
-}
 
-Postfix::~Postfix() {
-}
-
-int Postfix::operaci(const char a) 
+int Postfix::Operator(char k)
 {
-	switch (a)
+	switch (k)
 	{
-	case '*':
-		return 3;
-	case '/':
-		return 3;
-	case '+':
-		return 2;
-	case '-':
-		return 2;
-	case '(':
-		return 1;
-	case ')':
-		return 1;
+		case '+':
+			return 2;
+		case '-':
+			return 2;
+		case '*':
+			return 3;
+		case '/':
+			return 3;
+		case '(':
+			return 1;
+		case ')':
+			return 1;
 	}
-}
-
-int Postfix::prioritet(const char a) 
-{
-	if ((a == '*') || (a == '/') || (a == '+') || (a == '-') || (a == '(') || (a == ')')) 
-		return operaci(a);
-	if (((a >= 'a') && (a <= 'z')) || ((a >= 'A') && (a <= 'Z')) || (a == ' ') || ((a >=-1000) && (a <= 1000)))
 	return 0;
-	else throw "a";
 }
 
-char Postfix::skobka()
+void Postfix::Bracket(const string& str)const
 {
-	char a = oper->pop();
-	while (a != '(')
+	int l = 0;
+	int r = 0;
+	for (int i = 0; i < str.length(); i++)
 	{
-		res->push(a);
-		a = oper->pop();
+		if (str[i] == '(')
+			l++;
+		if (str[i] == ')')
+			r++;
 	}
-	
-	return (a);
+	if (l != r)
+		throw
+		exception("You entered incorrect string");
 }
 
-char Postfix::ponizhenie(char a) 
+int Postfix::Line(const string &s) const
 {
-	char b = oper->pop();
-	while ((operaci(a)) < (operaci(b)) && (oper->isempty() != true)) 
+	if (s.length() == 0)
+		return 1;
+	Postfix p;
+	if (s.length() == 1)
+		if (p.Operator(s[0]))
+			return 1;
+	if (p.Operator(s[0]) > 1)
+		return 1;
+	char left;
+	char right;
+	int m = 0;
+	for (int i, j = 1; j < s.length(); j++)
 	{
-		res->push(b);
-		b = oper->pop();
+		i = m;
+		left = s[i];
+		right = s[j];
+		if (right == ' ')
+			continue;
+		if ((!p.Operator(left)) && (!p.Operator(right)))
+			return 1;
+		if ((left == '(') && ((right == '+') || (right == '*') || (right == '/')))
+			return 1;
+		if ((right == ')') && ((left == '-') || (left == '+') || (left == '*') || (left == '/')))
+			return 1;
+		if ((left == ')') && (right == '('))
+			return 1;
+		if ((left == right) && (left == '('))
+			continue;
+		if ((left == right) && (left == ')'))
+			continue;
+		if (p.Operator(left) == p.Operator(right))
+			return 1;
+		if ((left == '*') && ((right == '+') || (right == '-') || (right == '/') || (right == ')') || (right == '+')))
+			return 1;
+		if ((left == '/') && ((right == '+') || (right == '-') || (right == '*') || (right == ')') || (right == '+')))
+			return 1;
+		if ((left == '+') && ((right == '*') || (right == '-') || (right == '/') || (right == ')') || (right == '+')))
+			return 1;
+		if ((left == '-') && ((right == '+') || (right == '-') || (right == '/') || (right == ')') || (right == '+')))
+			return 1;
+		if ((right == ')') && ((left == '+') || (left == '-') || (left == '*') || (left == '/')))
+			return 1;
+		m = j;
 	}
-	if (operaci(a) <= operaci(b))
-		res->push(b);
-	else oper -> push(b);
-	return a;
+	return 0;
 }
 
-string Postfix::printres()
+
+string Postfix::Record(const string& infstring)const
 {
-	char a;
-	if (oper->isempty() == 0)
-		throw ("OPERACII NE KONCHILIS'");
-	while (res->isempty() != 1)
+
+	if (!infstring.length())
+		throw
+		exception("String is empty");
+	Bracket(infstring);
+	int tmp1 = Line(infstring);
+	if (tmp1)
+		throw
+		exception("You have entered incorrect string");
+	map <char, int> operations;
+	operations['*'] = 3;
+	operations['/'] = 3;
+	operations['+'] = 2;
+	operations['-'] = 2;
+	operations['('] = 1;
+	Stack<char> result;
+	Stack<char> operationsstack;
+	char temp;
+	for (int i = 0; i < infstring.length(); i++)
 	{
-		a = res->pop();	
-		while (a == '(')
-			a = res->pop();			
-		oper->push(a);
+		if (infstring[i] == ' ')
+			continue;
+		temp = infstring[i];
+		if (operations.count(temp))
+		{
+			if ((!operationsstack.IsEmpty()) && (operations[temp] <= operations[operationsstack.GetKey()]) && (temp != '('))
+				while ((!operationsstack.IsEmpty()) && (operations[temp] <= operations[operationsstack.GetKey()]))
+					result.Push(operationsstack.Pop());
+			operationsstack.Push(temp);
+			continue;
+		}
+		if (((temp >= 'a') && (temp <= 'z')) || ((temp >= 'A') && (temp <= 'Z')))
+		{
+			result.Push(temp);
+			continue;
+		}
+		if (temp == ')')
+		{
+			char t = '0';
+			while ((!operationsstack.IsEmpty()) && (t != '('))
+			{
+				t = operationsstack.Pop();
+				result.Push(t);
+			}
+			if (t == '(')
+				result.Pop();
+			continue;
+		}
+		throw 
+			exception("You have entered anavailable symbol");
 	}
-	string v;
-	while (oper->isempty() != 1)
-		v.push_back(oper->pop());	
-	return v;
+	while (!operationsstack.IsEmpty())
+		result.Push(operationsstack.Pop());
+	if (result.IsEmpty())
+		throw 
+			exception("You haven't entered any expression");
+	string resultstring = "";
+	while (!result.IsEmpty())
+		operationsstack.Push(result.Pop());
+	while (!operationsstack.IsEmpty())
+		resultstring += operationsstack.Pop();
+	return resultstring;
 }
 
-string Postfix::postfix () 
+ExpType Postfix::Count(const string& poststring, map<char, ExpType> values)
 {
-	if (v1 == "")
-		throw ("ZADANa PYSTAYA STROKA"); 
-	char a;
+	if (poststring == "")
+		throw
+		exception("String is empty");
+	Stack<ExpType> result;
 	char tmp;
-	int n=0, m=0; //n - приоритет данной операции, m - приоритет прошлой операции
-	for (int i=0; i<v1.length();i++) 
+	ExpType leftOperand;
+	ExpType rightOperand;
+	for (int i = 0; i < poststring.length(); i++) 
 	{
-		a = v1[i];
-		n = prioritet(a);
-		if (n == 0)
-			res->push(a);
-		else 
+		tmp = poststring[i];
+		if (poststring[poststring.length() - 1] == '=')
+			values[poststring[0]] = 0;
+		if (((tmp >= 'a') && (tmp <= 'z')) || ((tmp >= 'A') && (tmp <= 'Z'))) 
 		{
-			if (a == ')') 
-				a = skobka();
-			else if ((n < m) && (a != '('))
-				a = ponizhenie(a);
-			oper->push(a);
-			m = n;
+			if (!values.count(tmp))
+			{
+				cout << "Enter " << tmp << ": ";
+				cin >> values[tmp];
+			}
+			result.Push(values[tmp]);
+			continue;
+		}
+		if (result.IsEmpty())
+			throw 
+			exception("There is no result");
+		rightOperand = result.Pop();
+		if ((result.IsEmpty()) && (tmp == '-'))
+		{
+			result.Push(-rightOperand);
+			continue;
+		}
+		if (result.IsEmpty())
+			throw 
+			exception("There is no result");
+		leftOperand = result.Pop();
+		switch (tmp)
+		{
+		case '+':
+			result.Push(leftOperand + rightOperand);
+			break;
+		case '-':
+			result.Push(leftOperand - rightOperand);
+			break;
+		case '*':
+			result.Push(leftOperand * rightOperand);
+			break;
+		case '/':
+			if (rightOperand == 0)
+				throw
+				exception("You can't divide by 0");
+			result.Push(leftOperand / rightOperand);			
+			break;
 		}
 	}
-	if (oper->isempty() != true)
-		while (oper->isempty() != true)
-		{
-			tmp = oper->pop();
-			res->push(tmp);
-		}
-	string v2 = printres();
-	return v2;
+
+	ExpType res = result.Pop();
+	if (!result.IsEmpty())
+		throw
+		exception("You have entered incorrect string");
+	return res;
 }

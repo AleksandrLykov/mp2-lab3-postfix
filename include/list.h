@@ -32,6 +32,8 @@ public:
 	void pushend (const PType&);
 	void remove (const PType& key);
 	Node<PType>* getfirst(void);
+	int operator == (const list<PType>& l)const;
+	int operator != (const list<PType>& l)const;
 	void print();
 };
 
@@ -168,6 +170,29 @@ template <class PType>
 Node<PType>* list<PType>::getfirst(void)
 {
     return pFirst;
+}
+
+template <class PType>
+int list<PType>::operator==(const list<PType>& l)const
+{
+	Node<PType>* f1 = pFirst;
+	Node<PType>* f2 = l.pFirst;
+	while ((f1 != 0) && (f2 != 0)) 
+	{
+		if (f1->key != f2->key)
+			return 0;
+		f1 = f1->pNext;
+		f2 = f2->pNext;
+	}
+	if (f1 != f2)
+		return 0;
+	return 1;
+}
+
+template<class PType>
+int list<PType>::operator!=(const list<PType>& l)const
+{
+	return !(*this == l);
 }
 
 //печать списка
