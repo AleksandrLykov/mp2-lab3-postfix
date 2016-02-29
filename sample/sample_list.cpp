@@ -19,5 +19,4 @@ void main()
     l->remove(1);
     l->print();
     cout << endl;
-	system ("pause");
 }

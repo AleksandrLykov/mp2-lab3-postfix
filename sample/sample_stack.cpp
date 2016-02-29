@@ -11,15 +11,14 @@ void main()
 	int k;
 	for (i=0; i < n; i++)
 	{
-		cout << "Введите выши элементы: ";
+		cout << "Введите ваши элементы: ";
 		cin >> k;
 		s->Push(k);
 	}
-	cout << endl << "Вы добавили " << n << " элемента " << endl;
+	cout << endl << "Вы добавили " << n << " элемента(-ов) " << endl;
 	s->Print();	
 	cout << endl << "Удалили один элемент " << endl;
 	s->Pop();
 	s->Print();
-	system ("pause");
 	return;
 }

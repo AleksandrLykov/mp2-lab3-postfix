@@ -1,0 +1,8 @@
+C:/Users/stud2015/Desktop/123/mp2-lab3-postfix/sln/test/CMakeFiles/test_mp2-lab3-postfix.dir
+C:/Users/stud2015/Desktop/123/mp2-lab3-postfix/sln/sample/CMakeFiles/sample_postfix.dir
+C:/Users/stud2015/Desktop/123/mp2-lab3-postfix/sln/sample/CMakeFiles/sample_stack.dir
+C:/Users/stud2015/Desktop/123/mp2-lab3-postfix/sln/gtest/CMakeFiles/gtest.dir
+C:/Users/stud2015/Desktop/123/mp2-lab3-postfix/sln/src/CMakeFiles/mp2-lab3-postfix.dir
+C:/Users/stud2015/Desktop/123/mp2-lab3-postfix/sln/CMakeFiles/ALL_BUILD.dir
+C:/Users/stud2015/Desktop/123/mp2-lab3-postfix/sln/sample/CMakeFiles/sample_list.dir
+C:/Users/stud2015/Desktop/123/mp2-lab3-postfix/sln/CMakeFiles/ZERO_CHECK.dir

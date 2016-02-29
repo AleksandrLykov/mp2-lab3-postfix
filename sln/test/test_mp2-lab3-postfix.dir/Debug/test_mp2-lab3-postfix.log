@@ -1,0 +1,19 @@
+﻿Build started 29.02.2016 10:48:13.
+     1>Project "C:\Users\stud2015\Desktop\123\mp2-lab3-postfix\sln\test\test_mp2-lab3-postfix.vcxproj" on node 4 (Rebuild target(s)).
+     1>CustomBuild:
+         Building Custom Rule C:/Users/stud2015/Desktop/123/mp2-lab3-postfix/test/CMakeLists.txt
+         CMake does not need to re-run because C:\Users\stud2015\Desktop\123\mp2-lab3-postfix\sln\test\CMakeFiles\generate.stamp is up-to-date.
+       ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I"C:\Users\stud2015\Desktop\123\mp2-lab3-postfix\include" /I"C:\Users\stud2015\Desktop\123\mp2-lab3-postfix\gtest" /I"C:\Users\stud2015\Desktop\123\mp2-lab3-postfix\src" /Zi /nologo /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D _DEBUG /D _VARIADIC_MAX=10 /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /Zc:wchar_t /Zc:forScope /GR /Fo"test_mp2-lab3-postfix.dir\Debug\\" /Fd"test_mp2-lab3-postfix.dir\Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt "C:\Users\stud2015\Desktop\123\mp2-lab3-postfix\test\test_main.cpp" "C:\Users\stud2015\Desktop\123\mp2-lab3-postfix\test\test_postfix.cpp"
+         test_main.cpp
+         test_postfix.cpp
+         Generating Code...
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\stud2015\Desktop\123\mp2-lab3-postfix\sln\bin\test_mp2-lab3-postfix.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib ..\lib\Debug\gtest.lib "..\lib\Debug\mp2-lab3-postfix.lib" /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/stud2015/Desktop/123/mp2-lab3-postfix/sln/bin/test_mp2-lab3-postfix.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/stud2015/Desktop/123/mp2-lab3-postfix/sln/lib/Debug/test_mp2-lab3-postfix.lib" /MACHINE:X86 /SAFESEH  /machine:X86 /debug "test_mp2-lab3-postfix.dir\Debug\test_main.obj"
+         "test_mp2-lab3-postfix.dir\Debug\test_postfix.obj"
+         test_mp2-lab3-postfix.vcxproj -> C:\Users\stud2015\Desktop\123\mp2-lab3-postfix\sln\bin\test_mp2-lab3-postfix.exe
+     1>Done Building Project "C:\Users\stud2015\Desktop\123\mp2-lab3-postfix\sln\test\test_mp2-lab3-postfix.vcxproj" (Rebuild target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:02.56
