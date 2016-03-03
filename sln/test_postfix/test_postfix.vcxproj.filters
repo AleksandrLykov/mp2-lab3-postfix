@@ -11,13 +11,11 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\gtest\gtest-all.cc">
+    <ClCompile Include="..\..\test\test_main.cpp">
       <Filter>Файлы исходного кода</Filter>
     </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\..\gtest\gtest.h">
-      <Filter>Заголовочные файлы</Filter>
-    </ClInclude>
+    <ClCompile Include="..\..\test\test_postfix.cpp">
+      <Filter>Файлы исходного кода</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

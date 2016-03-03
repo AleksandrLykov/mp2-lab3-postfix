@@ -11,8 +11,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{CF58C4E8-1ABF-491A-AEBD-97A5F3FEB783}</ProjectGuid>
-    <RootNamespace>gtest</RootNamespace>
+    <ProjectGuid>{C6BE058C-BAAE-4A21-A079-427B3FA79E33}</ProjectGuid>
+    <RootNamespace>mp2lab3postfix</RootNamespace>
+    <ProjectName>postfix</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -60,10 +61,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\gtest\gtest-all.cc" />
+    <ClCompile Include="..\src\postfix.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../include</AdditionalIncludeDirectories>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\gtest\gtest.h" />
+    <ClInclude Include="..\include\list.h" />
+    <ClInclude Include="..\include\postfix.h" />
+    <ClInclude Include="..\include\stack.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

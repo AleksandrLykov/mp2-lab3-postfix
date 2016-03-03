@@ -11,12 +11,13 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{CF58C4E8-1ABF-491A-AEBD-97A5F3FEB783}</ProjectGuid>
-    <RootNamespace>gtest</RootNamespace>
+    <ProjectGuid>{4B10486C-ABC8-4CEF-A42E-F5DF6BC0CF2B}</ProjectGuid>
+    <RootNamespace>sample_postfi</RootNamespace>
+    <ProjectName>sample_postfix</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
@@ -41,6 +42,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>..\..\include; ..\..\src</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -60,10 +62,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\gtest\gtest-all.cc" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\..\gtest\gtest.h" />
+    <ClCompile Include="..\..\sample\sample_postfix.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
